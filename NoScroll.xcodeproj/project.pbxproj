@@ -1,25 +1,13 @@
 // !$*UTF8*$!
 {
 	archiveVersion = 1;
-	classes = {
-	};
 	objects = {
-		08FB779EFE846664C026F1677140B408 /* NoScroll */ = {
-			isa = PBXFileReference;
-			fileEncoding = 4;
-			lastKnownFileType = "compiled.mach-o.executable";
-			name = NoScroll;
-			path = NoScroll;
-			sourceRoot = /workspace/NoScroll;
-		};
-
-		B49F586726C195470095A1D4 /* NoScroll.app */ = {
+		B49F586726C195470095A1D4 /* NoScroll */ = {
 			isa = PBXFileReference;
 			fileEncoding = 4;
 			lastKnownFileType = wrapper.application;
-			name = NoScroll.app;
-			path = NoScroll.app;
-			sourceRoot = /workspace/NoScroll;
+			name = NoScroll;
+			path = NoScroll;
 		};
 
 		B49F586926C195470095A1D4 /* Project object */ = {
@@ -27,26 +15,13 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1331;
-				LastUpgradeVersion = 1331;
-				TargetAttributes = {
-					B49F586726C195470095A1D4 = {
-						CreatedOnToolsVersion = 13.3.1;
-					};
-				};
 			};
 			buildConfigurationList = B49F586C26C195470095A1D4 /* Build configuration list for PBXProject "NoScroll" */;
 			compatibilityVersion = Xcode 13.0;
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
-			knownRegions = (
-				English,
-				en
-			);
 			mainGroup = B49F586826C195470095A1D4 /* NoScroll */;
 			productRefGroup = B49F588126C195470095A1D4 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			sharedFrameworkScheme = B49F588426C195470095A1D4 /* NoScroll */;
 			targets = (
 				B49F586726C195470095A1D4 /* NoScroll */,
 			);
@@ -63,7 +38,7 @@
 				B49F588526C195470095A1D4 /* Base.lproj */,
 			);
 			name = NoScroll;
-			sourceRoot = /workspace/NoScroll;
+			sourceRoot = "";
 		};
 
 		B49F586A26C195470095A1D4 /* NoScroll */ = {
@@ -73,7 +48,6 @@
 			);
 			name = NoScroll;
 			path = NoScroll;
-			sourceRoot = /workspace/NoScroll;
 		};
 
 		B49F587026C195470095A1D4 /* Models */ = {
@@ -83,7 +57,6 @@
 			);
 			name = Models;
 			path = NoScroll/Models;
-			sourceRoot = /workspace/NoScroll;
 		};
 
 		B49F587126C195470095A1D4 /* Views */ = {
@@ -98,7 +71,6 @@
 			);
 			name = Views;
 			path = NoScroll/Views;
-			sourceRoot = /workspace/NoScroll;
 		};
 
 		B49F587226C195470095A1D4 /* Services */ = {
@@ -109,7 +81,6 @@
 			);
 			name = Services;
 			path = NoScroll/Services;
-			sourceRoot = /workspace/NoScroll;
 		};
 
 		B49F587326C195470095A1D4 /* AppModels.swift */ = {
@@ -118,7 +89,6 @@
 			lastKnownFileType = sourcecode.swift;
 			name = AppModels.swift;
 			path = NoScroll/Models/AppModels.swift;
-			sourceRoot = /workspace/NoScroll;
 		};
 
 		B49F587526C195470095A1D4 /* Info.plist */ = {
@@ -127,7 +97,6 @@
 			lastKnownFileType = text.plist.xml;
 			name = Info.plist;
 			path = Info.plist;
-			sourceRoot = /workspace/NoScroll;
 		};
 
 		B49F587626C195470095A1D4 /* MainTabView.swift */ = {
@@ -136,7 +105,6 @@
 			lastKnownFileType = sourcecode.swift;
 			name = MainTabView.swift;
 			path = NoScroll/Views/MainTabView.swift;
-			sourceRoot = /workspace/NoScroll;
 		};
 
 		B49F587726C195470095A1D4 /* HomeView.swift */ = {
@@ -145,7 +113,6 @@
 			lastKnownFileType = sourcecode.swift;
 			name = HomeView.swift;
 			path = NoScroll/Views/HomeView.swift;
-			sourceRoot = /workspace/NoScroll;
 		};
 
 		B49F587826C195470095A1D4 /* BlockingView.swift */ = {
@@ -154,7 +121,6 @@
 			lastKnownFileType = sourcecode.swift;
 			name = BlockingView.swift;
 			path = NoScroll/Views/BlockingView.swift;
-			sourceRoot = /workspace/NoScroll;
 		};
 
 		B49F587926C195470095A1D4 /* SessionsView.swift */ = {
@@ -163,7 +129,6 @@
 			lastKnownFileType = sourcecode.swift;
 			name = SessionsView.swift;
 			path = NoScroll/Views/SessionsView.swift;
-			sourceRoot = /workspace/NoScroll;
 		};
 
 		B49F587A26C195470095A1D4 /* SettingsView.swift */ = {
@@ -172,7 +137,6 @@
 			lastKnownFileType = sourcecode.swift;
 			name = SettingsView.swift;
 			path = NoScroll/Views/SettingsView.swift;
-			sourceRoot = /workspace/NoScroll;
 		};
 
 		B49F587B26C195470095A1D4 /* SetupView.swift */ = {
@@ -181,7 +145,6 @@
 			lastKnownFileType = sourcecode.swift;
 			name = SetupView.swift;
 			path = NoScroll/Views/SetupView.swift;
-			sourceRoot = /workspace/NoScroll;
 		};
 
 		B49F587C26C195470095A1D4 /* LocationManager.swift */ = {
@@ -190,7 +153,6 @@
 			lastKnownFileType = sourcecode.swift;
 			name = LocationManager.swift;
 			path = NoScroll/Services/LocationManager.swift;
-			sourceRoot = /workspace/NoScroll;
 		};
 
 		B49F587D26C195470095A1D4 /* BluetoothManager.swift */ = {
@@ -199,7 +161,6 @@
 			lastKnownFileType = sourcecode.swift;
 			name = BluetoothManager.swift;
 			path = NoScroll/Services/BluetoothManager.swift;
-			sourceRoot = /workspace/NoScroll;
 		};
 
 		B49F587E26C195470095A1D4 /* NoScrollApp.swift */ = {
@@ -208,7 +169,6 @@
 			lastKnownFileType = sourcecode.swift;
 			name = NoScrollApp.swift;
 			path = NoScroll/NoScrollApp.swift;
-			sourceRoot = /workspace/NoScroll;
 		};
 
 		B49F588026C195470095A1D4 /* Frameworks */ = {
@@ -216,200 +176,17 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceRoot = /workspace/NoScroll;
 		};
 
 		B49F588126C195470095A1D4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B49F586726C195470095A1D4 /* NoScroll.app */,
+				B49F586726C195470095A1D4 /* NoScroll */,
 			);
 			name = Products;
-			sourceRoot = /workspace/NoScroll;
 		};
 
 		B49F588426C195470095A1D4 /* NoScroll */ = {
-			isa = XCScheme;
-			BuildAction = {
-				buildImplicitDependencies = 1;
-				parallelizeBuildables = 1;
-				buildableProductRunnables = (
-				);
-				targets = (
-					{
-						buildForAnalyze = 0;
-						buildForArchive = 1;
-						buildForProfiling = 0;
-						buildForRunning = 1;
-						buildForTesting = 0;
-						buildable = B49F586726C195470095A1D4;
-						copyFiles = (
-						);
-						runPostActionsOnFailure = 0;
-						alwaysOutOfDate = 0;
-					};
-				);
-			};
-			LaunchAction = {
-				buildConfiguration = Debug;
-				selectedDebuggerIdentifier = Xcode.DefaultDebugger;
-				selectedLauncherIdentifier = Xcode.DefaultLauncher;
-				launchStyle = 0;
-				useCustomWorkingDirectory = 0;
-				ignoresPersistentStateOnLaunch = 0;
-				debugDocumentVersioning = 1;
-				debugServiceExtension = "";
-				allowLocationSimulation = 1;
-			};
-			ProfileAction = {
-				buildConfiguration = Release;
-				shouldUseLaunchSchemeArgsEnv = 1;
-				savedToolIdentifier = "";
-				useCustomWorkingDirectory = 0;
-				debugDocumentVersioning = 1;
-			};
-			AnalyzeAction = {
-			};
-			ArchiveAction = {
-				buildConfiguration = Release;
-				revealArchiveInOrganizer = 1;
-			};
-			TestAction = {
-				buildConfiguration = Debug;
-				selectedDebuggerIdentifier = Xcode.DefaultDebugger;
-				selectedLauncherIdentifier = Xcode.DefaultLauncher;
-				shouldUseLaunchSchemeArgsEnv = 0;
-			};
-			name = NoScroll;
-		};
-
-		B49F588526C195470095A1D4 /* Base.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				B49F588626C195470095A1D4 /* LaunchScreen.storyboard */,
-			);
-			name = Base.lproj;
-			path = NoScroll/Base.lproj;
-			sourceRoot = /workspace/NoScroll;
-		};
-
-		B49F588626C195470095A1D4 /* LaunchScreen.storyboard */ = {
-			isa = PBXFileReference;
-			fileEncoding = 4;
-			lastKnownFileType = file.storyboard;
-			name = LaunchScreen.storyboard;
-			path = NoScroll/Base.lproj/LaunchScreen.storyboard;
-			sourceRoot = /workspace/NoScroll;
-		};
-
-		B49F586C26C195470095A1D4 /* Build configuration list for PBXProject "NoScroll" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B49F586D26C195470095A1D4 /* Debug */,
-				B49F586E26C195470095A1D4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-
-		B49F586D26C195470095A1D4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_MODELING = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf-with-dsym;
-				ENABLE_NS_ASSERTIONS = YES;
-				ENABLE_PREVIEWS = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-
-		B49F586E26C195470095A1D4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_MODELING = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_PREVIEWS = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-
-		B49F588726C195470095A1D4 /* NoScroll.xcscheme */ = {
 			isa = XCScheme;
 			BuildAction = {
 				buildImplicitDependencies = YES;
@@ -462,6 +239,76 @@
 				shouldUseLaunchSchemeArgsEnv = NO;
 			};
 			name = NoScroll;
+		};
+
+		B49F588526C195470095A1D4 /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				B49F588626C195470095A1D4 /* LaunchScreen.storyboard */,
+			);
+			name = Base.lproj;
+			path = NoScroll/Base.lproj;
+		};
+
+		B49F588626C195470095A1D4 /* LaunchScreen.storyboard */ = {
+			isa = PBXFileReference;
+			fileEncoding = 4;
+			lastKnownFileType = file.storyboard;
+			name = LaunchScreen.storyboard;
+			path = NoScroll/Base.lproj/LaunchScreen.storyboard;
+		};
+
+		B49F586C26C195470095A1D4 /* Build configuration list for PBXProject "NoScroll" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B49F586D26C195470095A1D4 /* Debug */,
+				B49F586E26C195470095A1D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+
+		B49F586D26C195470095A1D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_MODELING = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_PREVIEWS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+
+		B49F586E26C195470095A1D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_MODELING = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_PREVIEWS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
 		};
 	};
 	rootObject = B49F586926C195470095A1D4 /* Project object */;
