@@ -1,0 +1,35 @@
+# Xcode
+*.xcodeproj/
+*.xcworkspace/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+
+# Build
+build/
+DerivedData/
+
+# Swift Package Manager
+.Package.resolved
+Package.resolved
+
+# Local overrides
+*.local
+
+# DS_Store
+.DS_Store
+
+# User data
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+*.log
+*.swp
