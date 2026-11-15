@@ -7,139 +7,254 @@ struct SetupView: View {
     @EnvironmentObject var bluetoothManager: BluetoothManager
     @Environment(\dismiss) var dismiss
 
-    @State private var selectedApp: MonitoredApp?
-    @State private var purpose: SessionPurpose = .browsing
-    @State private var customLimit: Int = 15
-    @State private var showLocationSetup = false
+    @State private var selectedTab: SetupTab = .appSelection
+
+    enum SetupTab {
+        case appSelection
+        case locationSetup
+        case settings
+    }
 
     var body: some View {
         NavigationStack {
-            Form {
-                Section(header: Text("Select App")) {
-                    Picker("App", selection: $selectedApp) {
-                        ForEach(appData.monitoredApps) { app in
-                            Text(app.appName).tag(app as MonitoredApp?)
-                        }
-                    }
-                }
-
-                if selectedApp != nil {
-                    Section(header: Text("Session Purpose")) {
-                        Picker("Purpose", selection: $purpose) {
-                            Text("Socializing").tag(SessionPurpose.socializing)
-                            Text("Browsing").tag(SessionPurpose.browsing)
-                        }
-                        .pickerStyle(SegmentedPickerStyle())
+            TabView(selection: $selectedTab) {
+                AppSelectionView(selectedTab: $selectedTab)
+                    .tag(SetupTab.appSelection)
+                    .tabItem {
+                        Label("Apps", systemImage: "apps.iphone")
                     }
 
-                    Section(header: Text("Time Limit")) {
-                        Stepper("Limit: \(customLimit) minutes", value: $customLimit, in: 5...120)
+                LocationSetupView(selectedTab: $selectedTab)
+                    .tag(SetupTab.locationSetup)
+                    .tabItem {
+                        Label("Locations", systemImage: "mappin.and.ellipse")
                     }
-                }
 
-                Section {
-                    Button("Start Session") {
-                        if let app = selectedApp {
-                            appData.startSession(for: app, purpose: purpose)
-                            dismiss()
-                        }
+                InitialSettingsView(selectedTab: $selectedTab)
+                    .tag(SetupTab.settings)
+                    .tabItem {
+                        Label("Settings", systemImage: "gear")
                     }
-                    .disabled(selectedApp == nil)
-                    .frame(maxWidth: .infinity)
-                }
-
-                Section(header: Text("Location-Based Blocking")) {
-                    Button("Setup Location Rule") {
-                        showLocationSetup = true
-                    }
-                }
             }
-            .navigationTitle("New Session")
+            .navigationTitle("Setup")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Done") {
                         dismiss()
                     }
                 }
-            }
-            .sheet(isPresented: $showLocationSetup) {
-                LocationSetupView()
-                    .environmentObject(appData)
-                    .environmentObject(locationManager)
             }
         }
     }
 }
 
-struct LocationSetupView: View {
+struct AppSelectionView: View {
+    @Binding var selectedTab: SetupView.SetupTab
     @EnvironmentObject var appData: AppData
-    @EnvironmentObject var locationManager: LocationManager
-    @Environment(\dismiss) var dismiss
-
-    @State private var ruleName = ""
-    @State private var ruleType: RuleType = .gps
-    @State private var rangeMeters: Double = 10.0
-    @State private var useCurrentLocation = false
-    @State private var selectedCoordinate: CLLocationCoordinate2D?
 
     var body: some View {
-        NavigationStack {
-            Form {
-                Section(header: Text("Rule Details")) {
-                    TextField("Rule Name", text: $ruleName)
-                    Picker("Type", selection: $ruleType) {
-                        Text("GPS").tag(RuleType.gps)
-                        Text("Bluetooth").tag(RuleType.bluetooth)
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-                }
-
-                if ruleType == .gps {
-                    Section(header: Text("Location")) {
-                        Toggle("Use Current Location", isOn: $useCurrentLocation)
-                            .onChange(of: useCurrentLocation) { newValue in
-                                if newValue {
-                                    selectedCoordinate = locationManager.currentLocation?.coordinate
-                                }
-                            }
-
-                        if let coord = selectedCoordinate {
-                            VStack(alignment: .leading) {
-                                Text("Lat: \(coord.latitude)")
-                                Text("Lon: \(coord.longitude)")
-                            }
-                            .font(.caption)
-                        }
-
-                        Slider(value: $rangeMeters, in: 1...100, step: 1)
-                        Text("\(Int(rangeMeters)) meters")
-                    }
-                }
-
-                Section {
-                    Button("Save Rule") {
-                        let rule = LocationRule(
-                            name: ruleName,
-                            ruleType: ruleType,
-                            coordinate: selectedCoordinate,
-                            rangeMeters: rangeMeters
-                        )
-                        appData.addLocationRule(rule)
-                        dismiss()
-                    }
-                    .disabled(ruleName.isEmpty)
-                    .frame(maxWidth: .infinity)
+        List {
+            Section(header: Text("Monitored Apps")) {
+                ForEach($appData.monitoredApps) { $app in
+                    Toggle(app.appName, isOn: $app.isActive)
                 }
             }
-            .navigationTitle("Location Setup")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") {
-                        dismiss()
-                    }
+
+            Section {
+                NavigationLink {
+                    AddCustomAppView()
+                        .environmentObject(appData)
+                } label: {
+                    Text("Add Custom App")
                 }
             }
         }
+    }
+}
+
+struct AddCustomAppView: View {
+    @EnvironmentObject var appData: AppData
+    @Environment(\dismiss) var dismiss
+
+    @State private var appName = ""
+    @State private var bundleID = ""
+    @State private var defaultLimit = 15
+    @State private var iconName = "app"
+
+    var availableIcons = ["camera", "music.note", "bubble", "play.tv", "text.bubble", "app", "network", "photo"]
+
+    var body: some View {
+        Form {
+            Section(header: Text("App Details")) {
+                TextField("App Name", text: $appName)
+                TextField("Bundle ID", text: $bundleID)
+                Stepper("Default Limit: \(defaultLimit) min", value: $defaultLimit, in: 5...120)
+            }
+
+            Section(header: Text("Icon")) {
+                Picker("Icon", selection: $iconName) {
+                    ForEach(availableIcons, id: \.self) { icon in
+                        HStack {
+                            Image(systemName: icon)
+                            Text(icon)
+                        }
+                        .tag(icon)
+                    }
+                }
+            }
+
+            Section {
+                Button("Add App") {
+                    appData.monitoredApps.append(MonitoredApp(
+                        appName: appName,
+                        bundleID: bundleID,
+                        defaultLimit: defaultLimit,
+                        iconName: iconName,
+                        isActive: true
+                    ))
+                    dismiss()
+                }
+                .frame(maxWidth: .infinity)
+                .disabled(appName.isEmpty || bundleID.isEmpty)
+            }
+        }
+        .navigationTitle("Add Custom App")
+    }
+}
+
+struct LocationSetupView: View {
+    @Binding var selectedTab: SetupView.SetupTab
+    @EnvironmentObject var appData: AppData
+    @EnvironmentObject var locationManager: LocationManager
+
+    @State private var showingAddGPS = false
+    @State private var showingAddBluetooth = false
+
+    var body: some View {
+        List {
+            Section(header: Text("GPS Rules")) {
+                ForEach(appData.locationRules.filter { $0.ruleType == .gps }) { rule in
+                    LocationRuleRow(rule: rule, appData: appData)
+                }
+                .onDelete { indexSet in
+                    let gpsRules = appData.locationRules.filter { $0.ruleType == .gps }
+                    let indices = indexSet.map { gpsRules[$0].id }
+                    for id in indices {
+                        if let index = appData.locationRules.firstIndex(where: { $0.id == id }) {
+                            appData.locationRules.remove(at: index)
+                        }
+                    }
+                }
+
+                Button {
+                    showingAddGPS = true
+                } label: {
+                    Text("Add GPS Rule")
+                }
+            }
+
+            Section(header: Text("Bluetooth Rules")) {
+                ForEach(appData.locationRules.filter { $0.ruleType == .bluetooth }) { rule in
+                    LocationRuleRow(rule: rule, appData: appData)
+                }
+                .onDelete { indexSet in
+                    let btRules = appData.locationRules.filter { $0.ruleType == .bluetooth }
+                    let indices = indexSet.map { btRules[$0].id }
+                    for id in indices {
+                        if let index = appData.locationRules.firstIndex(where: { $0.id == id }) {
+                            appData.locationRules.remove(at: index)
+                        }
+                    }
+                }
+
+                Button {
+                    showingAddBluetooth = true
+                } label: {
+                    Text("Add Bluetooth Rule")
+                }
+            }
+        }
+        .sheet(isPresented: $showingAddGPS) {
+            AddGPSRuleView()
+                .environmentObject(appData)
+                .environmentObject(locationManager)
+        }
+        .sheet(isPresented: $showingAddBluetooth) {
+            BluetoothScanView()
+                .environmentObject(appData)
+                .environmentObject(BluetoothManager())
+        }
+    }
+}
+
+struct InitialSettingsView: View {
+    @Binding var selectedTab: SetupView.SetupTab
+    @EnvironmentObject var appData: AppData
+
+    var body: some View {
+        Form {
+            Section(header: Text("Default Settings")) {
+                Stepper(
+                    "Max Extensions: \(appData.blockSettings.maxExtensions)",
+                    value: $appData.blockSettings.maxExtensions,
+                    in: 1...10
+                )
+
+                Toggle("Use Grace Period", isOn: $appData.blockSettings.useGracePeriod)
+
+                if appData.blockSettings.useGracePeriod {
+                    Stepper(
+                        "Grace Period: \(appData.blockSettings.gracePeriodMinutes) min",
+                        value: $appData.blockSettings.gracePeriodMinutes,
+                        in: 1...10
+                    )
+                }
+            }
+
+            Section(header: Text("Security")) {
+                NavigationLink {
+                    PasscodeSetupView()
+                        .environmentObject(appData)
+                } label: {
+                    Text("Set Passcode")
+                }
+
+                Toggle("Show Emergency QR", isOn: $appData.blockSettings.showEmergencyQR)
+            }
+        }
+        .navigationTitle("Initial Settings")
+    }
+}
+
+struct PasscodeSetupView: View {
+    @EnvironmentObject var appData: AppData
+    @Environment(\dismiss) var dismiss
+
+    @State private var passcode: String = ""
+    @State private var confirmPasscode: String = ""
+
+    var body: some View {
+        Form {
+            Section(header: Text("Set Passcode")) {
+                SecureField("Enter Passcode", text: $passcode)
+                    .keyboardType(.numberPad)
+                SecureField("Confirm Passcode", text: $confirmPasscode)
+                    .keyboardType(.numberPad)
+            }
+
+            Section {
+                Button("Save") {
+                    if passcode == confirmPasscode && passcode.count >= 4 {
+                        appData.blockSettings.passcode = passcode
+                        dismiss()
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                .disabled(passcode != confirmPasscode || passcode.count < 4)
+            }
+        }
+        .navigationTitle("Set Passcode")
     }
 }
 
